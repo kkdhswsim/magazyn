@@ -1,0 +1,12 @@
+<%-- 
+    Document   : jscss
+    Created on : 2015-06-06, 02:06:36
+    Author     : Dawid
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link href="css/style.css" rel="stylesheet" type="text/css"/>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+<script src="jquery/jquery.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>

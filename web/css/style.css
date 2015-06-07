@@ -1,0 +1,16 @@
+.header{
+    bacground-color: #000000;
+    color: #fff;
+    height: 40px;
+} 
+
+bottom{
+    background-color: #ddd;
+    height: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.content{
+    padding: 20px;
+}
