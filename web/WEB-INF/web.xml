@@ -9,9 +9,25 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>testSerwlet</servlet-name>
+        <servlet-class>test.testSerwlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DodajDoBazy</servlet-name>
+        <servlet-class>test.DodajDoBazy</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>testSerwlet</servlet-name>
+        <url-pattern>/testSerwlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DodajDoBazy</servlet-name>
+        <url-pattern>/DodajDoBazy</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -19,6 +35,6 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>faces/index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

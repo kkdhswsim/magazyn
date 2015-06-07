@@ -11,9 +11,9 @@ public class test {
     
     public static void main(String[] args){
         test te = new test();
-        te.listMySQL();
+        //te.listMySQL();
         //te.editMySQL();
-        te.saveMySQL();
+        //te.saveMySQL();
         //te.deleteMySQL();
         te.listMySQL();
     }
@@ -23,7 +23,6 @@ public class test {
         List<dostawca> list = dostawcaDAO.list();
         System.out.println("-dostawcy -");
        for(dostawca dostaw : list){
-           
            System.out.println("id: "+dostaw.getId()+" Nazwa: "+dostaw.getNazwa()+" Adres: "+dostaw.getAdres()+" NIP: "+dostaw.getNip());
        }
     }
@@ -39,7 +38,7 @@ public class test {
         public void saveMySQL(){
         dostawcaDAO dostawDAO = new dostawcaADD();
         dostawca dostaw = new dostawca();
-        dostaw.setId(6);
+        //dostaw.setId(6);
         dostaw.setAdres("ul. Chorzowska 27");
         dostaw.setNazwa("Firma PPPRR");
         dostaw.setNip("7777-1111-12122");
