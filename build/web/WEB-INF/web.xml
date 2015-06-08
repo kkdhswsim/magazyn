@@ -17,6 +17,14 @@
         <servlet-name>DodajDoBazy</servlet-name>
         <servlet-class>test.DodajDoBazy</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Index</servlet-name>
+        <servlet-class>controler.IndexSvt</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Dostawcy</servlet-name>
+        <servlet-class>controler.Dostawcy</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -28,6 +36,14 @@
     <servlet-mapping>
         <servlet-name>DodajDoBazy</servlet-name>
         <url-pattern>/DodajDoBazy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Index</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Dostawcy</servlet-name>
+        <url-pattern>/dostawcy</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -3,6 +3,10 @@
 <div>
     <div class="header">
         Aplikacja MAGAZYN v. 1.00 
+        <div class="menu">
+            <a href="index" class="btn btn-mini btn-primary">Index</a>
+            <a href="dostawcy?op=list" class="btn btn-mini btn-primary">Dostawcy</a>
+        </div>
     </div>
     
     <div class="content">

@@ -3,23 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package controler;
 
-import dao.dostawcaADD;
-import dao.dostawcaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.dostawca;
 
 /**
  *
  * @author Dawid
  */
-public class DodajDoBazy extends HttpServlet {
+public class IndexSvt extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,31 +36,12 @@ public class DodajDoBazy extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DodajDoBazy</title>");            
+            out.println("<title>Servlet Index</title>");            
             out.println("</head>");
             out.println("<body>");
-            
-            String nazwa_firmy = request.getParameter("nazwa_firmy");
-            String adres_firmy = request.getParameter("adres_firmy");
-            String nip_firmy = request.getParameter("nip_firmy");
-            if(nazwa_firmy!=null && adres_firmy!=null && nip_firmy!=null){
-                dostawcaDAO dostawDAO = new dostawcaADD();
-                dostawca dostaw = new dostawca();
-                //dostaw.setId(6);
-                dostaw.setAdres(adres_firmy);
-                dostaw.setNazwa(nazwa_firmy);
-                dostaw.setNip(nip_firmy);
-                dostawDAO.save(dostaw);
-                
-            out.println("<h3>Dodano do bazy poprawnie</h3>");
-            }
-            else{
-                out.println("Nie wypełniełeś wszystkich pól!!");
-            }
-            out.println("<a href='index.jsp'>Wróc</a>");
+            out.println("<h1>Servlet Index at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
         }
     }
 
@@ -78,7 +57,10 @@ public class DodajDoBazy extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String pagina = "/index.jsp";
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+        dispatcher.forward(request, response);
+        
     }
 
     /**
