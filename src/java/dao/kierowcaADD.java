@@ -9,7 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import model.dostawca;
+import model.kierowca;
 import paczka.connectionDB;
 import paczka.polaczenie;
 
@@ -17,30 +17,30 @@ import paczka.polaczenie;
  *
  * @author Dawid
  */
-public class dostawcaADD implements dostawcaDAO {
+public class kierowcaADD implements kierowcaDAO {
     
     polaczenie conn;
 
-    public dostawcaADD() {
+    public kierowcaADD() {
         
     }
     
     
 
-    @Override
-    public List<dostawca> list() {
+
+    public List<kierowca> list() {
         this.conn = connectionDB.open(connectionDB.MYSQL);
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT * FROM dostawcy");
-        List<dostawca> list = new ArrayList<dostawca>();
+        sql.append("SELECT * FROM kierowca");
+        List<kierowca> list = new ArrayList<kierowca>();
         try{
             ResultSet rs = this.conn.query(sql.toString());
             while(rs.next()){
-                dostawca dostaw = new dostawca();
+                kierowca dostaw = new kierowca();
                 dostaw.setId(rs.getInt("id"));
-                dostaw.setNazwa(rs.getString("nazwa"));
-                dostaw.setAdres(rs.getString("adres"));
-                dostaw.setNip(rs.getString("nip"));
+                dostaw.setImie(rs.getString("imie"));
+                dostaw.setNazwisko(rs.getString("nazwisko"));
+                dostaw.setNrdokumentu(rs.getString("nrdokumentu"));
                 list.add(dostaw);
             }
         }catch(Exception e){
@@ -51,19 +51,19 @@ public class dostawcaADD implements dostawcaDAO {
        return list;
     }
 
-    @Override
-    public dostawca edit(int id) {
+
+    public kierowca edit(int id) {
         this.conn = connectionDB.open(connectionDB.MYSQL);
-        dostawca dostaw = new dostawca();
+        kierowca dostaw = new kierowca();
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT * FROM dostawcy WHERE id = ").append(id);
+        sql.append("SELECT * FROM kierowca WHERE id = ").append(id);
         try{
             ResultSet rs = this.conn.query(sql.toString());
             while (rs.next()){
                 dostaw.setId(rs.getInt("id"));
-                dostaw.setNazwa(rs.getString("nazwa"));
-                dostaw.setAdres(rs.getString("adres"));
-                dostaw.setNip(rs.getString("nip"));
+                dostaw.setImie(rs.getString("imie"));
+                dostaw.setNazwisko(rs.getString("nazwisko"));
+                dostaw.setNrdokumentu(rs.getString("nrdokumentu"));
             }
         }catch(Exception e){  
         }finally{
@@ -72,23 +72,22 @@ public class dostawcaADD implements dostawcaDAO {
         return dostaw;
     }
 
-    @Override
-    public boolean save(dostawca dostaw) {
+    public boolean save(kierowca kierow) {
         this.conn = connectionDB.open(connectionDB.MYSQL);
         boolean save = false;
         try{
-            if(dostaw.getId() == 0) {//dodaje nowy wpis
+            if(kierow.getId() == 0) {//dodaje nowy wpis
                 StringBuilder sql = new StringBuilder();
-                sql.append("INSERT INTO dostawcy (nazwa, adres, nip) VALUES ('").append(dostaw.getNazwa());
-                sql.append("', '").append(dostaw.getAdres()).append("', '").append(dostaw.getNip()).append("')");
+                sql.append("INSERT INTO kierowca (imie, nazwisko, nrdokumentu) VALUES ('").append(kierow.getImie());
+                sql.append("', '").append(kierow.getNazwisko()).append("', '").append(kierow.getNrdokumentu()).append("')");
                 this.conn.execute(sql.toString());
             }else{//aktualizacja wpisu
                 StringBuilder sql = new StringBuilder();
-                sql.append("UPDATE dostawcy SET id = ").append(dostaw.getId());
-                sql.append(", nazwa = '").append(dostaw.getNazwa());
-                sql.append("', adres = '").append(dostaw.getAdres());
-                sql.append("', nip = '").append(dostaw.getNip());
-                sql.append("' WHERE id = ").append(dostaw.getId()).append(";");
+                sql.append("UPDATE dostawcy SET id = ").append(kierow.getId());
+                sql.append(", imie = '").append(kierow.getImie());
+                sql.append("', nazwisko = '").append(kierow.getNazwisko());
+                sql.append("', nrdokumentu = '").append(kierow.getNrdokumentu());
+                sql.append("' WHERE id = ").append(kierow.getId()).append(";");
                 this.conn.execute(sql.toString());
             }
             save = true;
@@ -100,13 +99,13 @@ public class dostawcaADD implements dostawcaDAO {
     return save;
     }
 
-    @Override
+
     public boolean delete(int id) {
       this.conn = connectionDB.open(connectionDB.MYSQL);
       boolean delete = false; 
       try{
           StringBuilder sql = new StringBuilder();
-          sql.append("DELETE FROM dostawcy WHERE id = ");
+          sql.append("DELETE FROM kierowca WHERE id = ");
           sql.append(id);
           this.conn.execute(sql.toString());
           

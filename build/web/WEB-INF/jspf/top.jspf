@@ -5,7 +5,9 @@
         Aplikacja MAGAZYN v. 1.00 
         <div class="menu">
             <a href="index" class="btn btn-mini btn-primary">Index</a>
-            <a href="dostawcy?op=list" class="btn btn-mini btn-primary">Dostawcy</a>
+            <a href="kierowcy?op=list" class="btn btn-mini btn-primary">Kierowcy</a>
+            <a href="ciezarowki?op=list" class="btn btn-mini btn-primary">Ciężarówki</a>
+            <a href="naczepy?op=list" class="btn btn-mini btn-primary">Naczepy</a>
         </div>
     </div>
     

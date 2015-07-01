@@ -6,13 +6,13 @@
 package dao;
 
 import java.util.List;
-import model.dostawca;
+import model.kierowca;
 
 
-public interface dostawcaDAO {
-    public List<dostawca> list();
-    public dostawca edit(int id);
-    public boolean save(dostawca dostaw);
+public interface kierowcaDAO {
+    public List<kierowca> list();
+    public kierowca edit(int id);
+    public boolean save(kierowca kierow);
     public boolean delete(int id);
     
 }

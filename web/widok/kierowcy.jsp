@@ -1,5 +1,5 @@
-<%@page import="controler.Dostawcy"%>
-<%@page import="model.dostawca"%>
+
+<%@page import="model.kierowca"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="list" scope="session" class="java.util.List" />
 <!DOCTYPE html>
@@ -13,27 +13,27 @@
     <body>
         <%@include file="../WEB-INF/jspf/top.jspf"%>
         <div style="width: 700px">
-            <a href="<%= request.getContextPath()%>/dostawcy?op=create" class="btn btn-mini btn-primary">Dodaj dostawcę</a>
+            <a href="<%= request.getContextPath()%>/kierowcy?op=create" class="btn btn-mini btn-primary">Dodaj dostawcę</a>
             <table class="table table-striped">
                 <tr>
                     <th>Id</th>
-                    <th>Nazwa</th>
-                    <th>Adres</th>
-                    <th>Nip</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Nr dokumentu</th>
                     <th>OPCJE</th>
                 </tr>
                 <%
                   for(int i=0; i<list.size(); i++){
-                      dostawca dostaw = new dostawca();
-                      dostaw = (dostawca)list.get(i);
+                      kierowca kierow = new kierowca();
+                      kierow = (kierowca)list.get(i);
                 %>
                 <tr>
-                    <td><%= dostaw.getId() %></td>
-                    <td><%= dostaw.getNazwa() %></td>
-                    <td><%= dostaw.getAdres() %></td>
-                    <td><%= dostaw.getNip() %></td>
-                    <td><a href="dostawcy" class="btn btn-mini btn-primary">Edytuj</a>
-                        <a href="dostawcy" class="btn btn-mini btn-primary">Usun</a>
+                    <td><%= kierow.getId() %></td>
+                    <td><%= kierow.getImie() %></td>
+                    <td><%= kierow.getNazwisko() %></td>
+                    <td><%= kierow.getNrdokumentu() %></td>
+                    <td><a href="kierowcy?op=update&id=<%= kierow.getId() %>" class="btn btn-mini btn-primary">Edytuj</a>
+                        <a href="kierowcy" class="btn btn-mini btn-primary">Usun</a>
                     </td>
                 </tr>
                  <%

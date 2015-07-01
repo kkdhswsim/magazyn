@@ -9,41 +9,31 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <servlet>
-        <servlet-name>testSerwlet</servlet-name>
-        <servlet-class>test.testSerwlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DodajDoBazy</servlet-name>
-        <servlet-class>test.DodajDoBazy</servlet-class>
-    </servlet>
+
+
     <servlet>
         <servlet-name>Index</servlet-name>
         <servlet-class>controler.IndexSvt</servlet-class>
     </servlet>
+
     <servlet>
-        <servlet-name>Dostawcy</servlet-name>
-        <servlet-class>controler.Dostawcy</servlet-class>
+        <servlet-name>Kierowcy</servlet-name>
+        <servlet-class>controler.Kierowcy</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>testSerwlet</servlet-name>
-        <url-pattern>/testSerwlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DodajDoBazy</servlet-name>
-        <url-pattern>/DodajDoBazy</url-pattern>
-    </servlet-mapping>
+
+
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
-        <servlet-name>Dostawcy</servlet-name>
-        <url-pattern>/dostawcy</url-pattern>
+        <servlet-name>Kierowcy</servlet-name>
+        <url-pattern>/kierowcy</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

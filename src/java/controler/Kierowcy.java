@@ -3,23 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package controler;
 
-import dao.dostawcaADD;
-import dao.dostawcaDAO;
+import dao.kierowcaADD;
+import dao.kierowcaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.dostawca;
-
+import javax.servlet.http.HttpSession;
+import model.kierowca;
 /**
  *
  * @author Dawid
  */
-public class DodajDoBazy extends HttpServlet {
+public class Kierowcy extends HttpServlet {
+    
+   
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,33 +42,25 @@ public class DodajDoBazy extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DodajDoBazy</title>");            
+            out.println("<title>Servlet Kierowcy</title>");            
             out.println("</head>");
             out.println("<body>");
-            
-            String nazwa_firmy = request.getParameter("nazwa_firmy");
-            String adres_firmy = request.getParameter("adres_firmy");
-            String nip_firmy = request.getParameter("nip_firmy");
-            if(nazwa_firmy!=null && adres_firmy!=null && nip_firmy!=null){
-                dostawcaDAO dostawDAO = new dostawcaADD();
-                dostawca dostaw = new dostawca();
-                //dostaw.setId(6);
-                dostaw.setAdres(adres_firmy);
-                dostaw.setNazwa(nazwa_firmy);
-                dostaw.setNip(nip_firmy);
-                dostawDAO.save(dostaw);
-                
-            out.println("<h3>Dodano do bazy poprawnie</h3>");
-            }
-            else{
-                out.println("Nie wypełniełeś wszystkich pól!!");
-            }
-            out.println("<a href='index.jsp'>Wróc</a>");
+            out.println("<h1>Servlet Kierowcy at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
         }
     }
+    
+          protected void list(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            String pagina = "/widok/kierowcy.jsp";
+            kierowcaDAO kierow = new kierowcaADD();
+            HttpSession session = request.getSession(true);
+            session.setAttribute("list", kierow.list());
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+            
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -76,9 +72,25 @@ public class DodajDoBazy extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String op = request.getParameter("op");
+        String pagina;
+        if(op.equals("create")){
+            pagina = "/widok/createKierowcy.jsp";
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+        }else if(op.equals("update")){
+            pagina = "/widok/updateKierowca.jsp";
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+        }
+        else{
+       this.list(request, response);
+    }
     }
 
     /**
@@ -93,6 +105,17 @@ public class DodajDoBazy extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        kierowca kierow = new kierowca();
+        
+        kierow.setImie(request.getParameter("imie_kierowcy"));
+        kierow.setNazwisko(request.getParameter("nazwisko_kierowcy"));
+        kierow.setNrdokumentu(request.getParameter("nrdokumentu_kierowcy"));
+        kierowcaDAO kierowDAO = new kierowcaADD();
+        kierowDAO.save(kierow);
+        this.list(request, response);
+
+        
     }
 
     /**
