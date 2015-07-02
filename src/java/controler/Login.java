@@ -5,19 +5,25 @@
  */
 package controler;
 
+import dao.loginADD;
+import dao.loginDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
+import model.login;
 /**
  *
  * @author Dawid
  */
-public class IndexSvt extends HttpServlet {
+public class Login extends HttpServlet {
+    
+   
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,14 +42,25 @@ public class IndexSvt extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Index</title>");            
+            out.println("<title>Servlet Kierowcy</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Index at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Kierowcy at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
+    
+          protected void list(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+            String pagina = "/widok/login.jsp";
+            loginDAO log = new loginADD();
+            HttpSession session = request.getSession(true);
+            session.setAttribute("list", log.list());
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+            
+        }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -55,12 +72,20 @@ public class IndexSvt extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String pagina = "/kierowca?op=start";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
-        dispatcher.forward(request, response);
         
+        String op = request.getParameter("op");
+        String pagina;
+        if(op.equals("create")){
+            pagina = "/widok/createUser.jsp";
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+        }
+        else{
+       this.list(request, response);
+    }
     }
 
     /**
@@ -75,6 +100,12 @@ public class IndexSvt extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+            String user = request.getParameter("user");
+            String pass = request.getParameter("pass");
+            
+            this.list(request, response);
+        
     }
 
     /**

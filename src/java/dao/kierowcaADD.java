@@ -71,6 +71,7 @@ public class kierowcaADD implements kierowcaDAO {
         }
         return dostaw;
     }
+    
 
     public boolean save(kierowca kierow) {
         this.conn = connectionDB.open(connectionDB.MYSQL);
@@ -83,7 +84,7 @@ public class kierowcaADD implements kierowcaDAO {
                 this.conn.execute(sql.toString());
             }else{//aktualizacja wpisu
                 StringBuilder sql = new StringBuilder();
-                sql.append("UPDATE dostawcy SET id = ").append(kierow.getId());
+                sql.append("UPDATE kierowca SET id = ").append(kierow.getId());
                 sql.append(", imie = '").append(kierow.getImie());
                 sql.append("', nazwisko = '").append(kierow.getNazwisko());
                 sql.append("', nrdokumentu = '").append(kierow.getNrdokumentu());
@@ -106,7 +107,7 @@ public class kierowcaADD implements kierowcaDAO {
       try{
           StringBuilder sql = new StringBuilder();
           sql.append("DELETE FROM kierowca WHERE id = ");
-          sql.append(id);
+          sql.append(id).append(";");
           this.conn.execute(sql.toString());
           
       }catch(Exception e){

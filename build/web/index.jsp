@@ -12,7 +12,8 @@
         <%@include file="WEB-INF/jspf/top.jspf"%>
     <div class="input-group" style="width: 300px">
     
-
+        <jsp:forward page="login?op=list" />
+        
     </div>
         <%@include file="WEB-INF/jspf/bottom.jspf"%>
     </body>

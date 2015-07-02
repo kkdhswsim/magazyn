@@ -42,10 +42,11 @@ public class Kierowcy extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Kierowcy</title>");            
+            out.println("<meta http-equiv='refresh' content='0; URL=kierowcy?op=list'>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Kierowcy at " + request.getContextPath() + "</h1>");
+            out.println("Dokonano zmian w profilu kierowca");
+            out.println("<a href='kierowcy?op=list'>do listy </a>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -87,7 +88,13 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
             dispatcher.forward(request, response);
+        }else if(op.equals("delete")){
+            pagina = "/widok/deleteKierowca.jsp";
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
         }
+ 
         else{
        this.list(request, response);
     }
@@ -108,13 +115,24 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
         
         kierowca kierow = new kierowca();
         
+        String Sinfo = request.getParameter("info");
+        int info = Integer.parseInt(Sinfo);
+        
+        String Sid = request.getParameter("id");
+        int id = Integer.parseInt(Sid);
+        
+        kierow.setId(id);
         kierow.setImie(request.getParameter("imie_kierowcy"));
         kierow.setNazwisko(request.getParameter("nazwisko_kierowcy"));
         kierow.setNrdokumentu(request.getParameter("nrdokumentu_kierowcy"));
         kierowcaDAO kierowDAO = new kierowcaADD();
+        if(info==0){
         kierowDAO.save(kierow);
+        }
+        else if(info==1){
+        kierowDAO.delete(id);
+        }
         this.list(request, response);
-
         
     }
 
