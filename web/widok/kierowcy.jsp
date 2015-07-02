@@ -7,12 +7,24 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="../WEB-INF/jspf/jscss.jspf"%>
-        <title>Program dla Magazynierów</title>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+        <title>Kierowcy</title>
+        
     </head>
-    <body>
+    <body style="background-color: black;">
+<div class="container" style="width: 770px; background-color: white;">
+        <div class="row">
+        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
+    <div id="logo" style="height: 150px;">
+
+    </div> 
+            
+    <div id="main"> 
+    <div class="content">
+        <div id="menu" style="height: 100px;">
         <%@include file="../WEB-INF/jspf/top.jspf"%>
-        <div style="width: 700px">
+        </div>
             <a href="<%= request.getContextPath()%>/kierowcy?op=create" class="btn btn-mini btn-primary">Dodaj dostawcę</a>
             <table class="table table-striped">
                 <tr>
@@ -40,9 +52,16 @@
                   }
                 %>
             </table>
-        </div>
+            <div class="clear"></div>
+    </div>
+    </div>
+            
+    <div id="footer">
+         <%@include file="../WEB-INF/jspf/bottom.jspf"%>
+    </div>
 
-    
-        <%@include file="../WEB-INF/jspf/bottom.jspf"%>
-    </body>
+        
+            
+</div>
+   </body>
 </html>
