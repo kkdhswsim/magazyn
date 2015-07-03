@@ -3,8 +3,8 @@
 
             <a href="index" class="btn btn-mini btn-primary">Index</a>
             <a href="kierowcy?op=list" class="btn btn-mini btn-primary">Kierowcy</a>
-            <a href="ciezarowki?op=list" class="btn btn-mini btn-primary">Ciężarówki</a>
-            <a href="naczepy?op=list" class="btn btn-mini btn-primary">Naczepy</a>
+            <a href="ciezarowka?op=list" class="btn btn-mini btn-primary">Ciężarówki</a>
+            <a href="naczepa?op=list" class="btn btn-mini btn-primary">Naczepy</a>
  
     
 

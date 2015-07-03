@@ -21,6 +21,14 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>controler.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Ciezarowka</servlet-name>
+        <servlet-class>controler.Ciezarowka</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Naczepa</servlet-name>
+        <servlet-class>controler.Naczepa</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -36,6 +44,14 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ciezarowka</servlet-name>
+        <url-pattern>/ciezarowka</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Naczepa</servlet-name>
+        <url-pattern>/naczepa</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
