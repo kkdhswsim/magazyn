@@ -51,6 +51,7 @@
                     <h4>Dodaj naczepę</h4>
                     <input type="hidden" class="form-control" name="info" value= '0'>
                     <input type="hidden" id="id" name="id" value="0">
+
                     <input type="text" class="form-control" placeholder="Marka" name="marka_naczepy" aria-describedby="basic-addon1" value=""><br/><br/>
                 <input type="text" class="form-control" placeholder="Typ" name="typ_naczepy" aria-describedby="basic-addon1"><br/><br/>
                 <input type="text" class="form-control" placeholder="Rejestracja" name="rejestracja_naczepy" aria-describedby="basic-addon1"><br/><br/>

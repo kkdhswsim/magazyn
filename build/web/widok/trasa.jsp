@@ -1,5 +1,5 @@
 
-<%@page import="model.naczepa"%>
+<%@page import="model.trasa"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="../WEB-INF/jspf/jscss.jspf"%>
-        <title>Naczepy - CREATE</title>
+        <title>Ciężarówki - Lista</title>
     </head>
     <!-- BODY STRONY -->
     <body style='background-color: #9999cc'>
@@ -43,23 +43,38 @@
                 </div>
                 <!-- KONIEC MENU -->
                 
-                <!-- ////////////////////////////////Główna część strony///////////////////////////// -->
-                <center>
-                 <div class="input-group" style="width: 300px">
-  
-                <form id="formDostawcy" name="formDostawcy" action="<%= request.getContextPath()%>/naczepa" method="post">
-                    <h4>Dodaj naczepę</h4>
-                    <input type="hidden" class="form-control" name="info" value= '0'>
-                    <input type="hidden" id="id" name="id" value="0">
-
-                    <input type="text" class="form-control" placeholder="Marka" name="marka_naczepy" aria-describedby="basic-addon1" value=""><br/><br/>
-                <input type="text" class="form-control" placeholder="Typ" name="typ_naczepy" aria-describedby="basic-addon1"><br/><br/>
-                <input type="text" class="form-control" placeholder="Rejestracja" name="rejestracja_naczepy" aria-describedby="basic-addon1"><br/><br/>
-                <button type="submit" class="btn btn-default navbar-btn">Dodaj naczepę</button>
-
-                </form>
-                </div></center>
-  
+                <!--//////////////////// Główna część strony///////////////////////// -->
+                <a href="<%= request.getContextPath()%>/trasa?op=create" class="btn btn-mini btn-primary">Dodaj trasę</a>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Data wyjazdu</th>
+                        <th>Miejsce wyjazdu</th>
+                        <th>Data powrotu</th>
+                        <th>Miejsce powrotu</th>
+                        <th>OPCJE</th>
+                    </tr>
+                    <%
+                      for(int i=0; i<list.size(); i++){
+                          trasa tr = new trasa();
+                          tr = (trasa)list.get(i);
+                    %>
+                <tr>
+                    <td><%= tr.getId() %></td>
+                    <td><%= tr.getDwyjazd() %></td>
+                    <td><%= tr.getMwyjazd() %></td>
+                    <td><%= tr.getDpowrot() %></td>
+                    <td><%= tr.getMpowrot() %></td>
+                    
+                    <td><a href="trasa?op=info&poz=<%= i%>&id=<%= tr.getId() %>" class="btn btn-mini btn-primary">Szczegóły</a>
+                        
+                    </td>
+                </tr>
+                 <%
+                  }
+                %>
+                </table>
+                
                 <!-- ////////////////////KONIEC głównej częsci strony//////////////////////////// -->
                 <div class="clear"></div>
             </div><!-- koniec CONTENT -->

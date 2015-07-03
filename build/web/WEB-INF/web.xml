@@ -29,6 +29,10 @@
         <servlet-name>Naczepa</servlet-name>
         <servlet-class>controler.Naczepa</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Trasa</servlet-name>
+        <servlet-class>controler.Trasa</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
@@ -52,6 +56,10 @@
     <servlet-mapping>
         <servlet-name>Naczepa</servlet-name>
         <url-pattern>/naczepa</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Trasa</servlet-name>
+        <url-pattern>/trasa</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

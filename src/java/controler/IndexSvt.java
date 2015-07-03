@@ -36,7 +36,8 @@ public class IndexSvt extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Index</title>");            
+            out.println("<title>Servlet Index</title>");   
+            out.println("<meta http-equiv='refresh' content='0; URL=trasy?op=list'>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet Index at " + request.getContextPath() + "</h1>");
@@ -75,6 +76,9 @@ public class IndexSvt extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+                String pagina = "/kierowca?op=start";
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+        dispatcher.forward(request, response);
     }
 
     /**

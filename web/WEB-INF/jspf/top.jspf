@@ -5,6 +5,7 @@
             <a href="kierowcy?op=list" class="btn btn-mini btn-primary">Kierowcy</a>
             <a href="ciezarowka?op=list" class="btn btn-mini btn-primary">Ciężarówki</a>
             <a href="naczepa?op=list" class="btn btn-mini btn-primary">Naczepy</a>
+            <a href="trasa?op=list" class="btn btn-mini btn-primary">Trasy</a>
  
     
 
