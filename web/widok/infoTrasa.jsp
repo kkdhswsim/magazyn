@@ -16,9 +16,13 @@
         <%@include file="../WEB-INF/jspf/jscss.jspf"%>
         <title>Trasa - INFO</title>
           <%
-        String baza = "jdbc:mysql://dawid73.cal24.pl/dawid73_swsim";
-        String user = "dawid73_swsim";
-        String haslo = "java4321";
+        //String baza = "jdbc:mysql://dawid73.cal24.pl/dawid73_swsim";
+        //String user = "dawid73_swsim";
+        //String haslo = "java4321";
+        
+        String baza = "jdbc:mysql://localhost:6033/transport";
+        String user = "root";
+        String haslo = "";
         %>
     </head>
     <!-- BODY STRONY -->

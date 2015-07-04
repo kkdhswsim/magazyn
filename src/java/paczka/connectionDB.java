@@ -4,7 +4,8 @@ package paczka;
 public class connectionDB {
     
     public static final int MYSQL = 1;
-    public static String[] configMYSQL = {"dawid73_swsim", "dawid73_swsim", "java4321"};
+   // public static String[] configMYSQL = {"dawid73_swsim", "dawid73_swsim", "java4321"};
+    public static String[] configMYSQL = {"transport", "root", ""};
     
     public static polaczenie open(int typeDb){
         switch(typeDb){

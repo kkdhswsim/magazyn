@@ -16,8 +16,8 @@ public final class MySQLpolaczenie extends polaczenie{
     public Connection open() {
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://dawid73.cal24.pl/"+this.params[0];
-
+            //String url = "jdbc:mysql://dawid73.cal24.pl/"+this.params[0];
+            String url = "jdbc:mysql://localhost:6033/"+this.params[0];
             this.connection = DriverManager.getConnection(url, this.params[1], this.params[2]);
         }catch(Exception e){
             e.printStackTrace();

@@ -137,6 +137,9 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
         
+        request.setCharacterEncoding("text/html;charset=UTF-8");
+        response.setCharacterEncoding("text/html;charset=UTF-8");
+        
         trasa tr = new trasa();
         
         String Sinfo = request.getParameter("info");
