@@ -15,6 +15,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="../WEB-INF/jspf/jscss.jspf"%>
         <title>Trasa - INFO</title>
+          <%
+        String baza = "jdbc:mysql://dawid73.cal24.pl/dawid73_swsim";
+        String user = "dawid73_swsim";
+        String haslo = "java4321";
+        %>
     </head>
     <!-- BODY STRONY -->
     <body style='background-color: #9999cc'>
@@ -94,7 +99,7 @@
     String imie="";
                         Connection connection = null;
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        connection = DriverManager.getConnection("jdbc:mysql://dawid73.cal24.pl/dawid73_swsim", "dawid73_swsim", "java4321");
+                        connection = DriverManager.getConnection(baza, user, haslo);
                         Statement statement = connection.createStatement() ;
                         ResultSet resultset = statement.executeQuery("select nazwisko, imie from kierowca WHERE id=" + idk) ;
   
@@ -116,7 +121,7 @@
     String rejc="";
                         Connection connection2 = null;
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        connection2 = DriverManager.getConnection("jdbc:mysql://dawid73.cal24.pl/dawid73_swsim", "dawid73_swsim", "java4321");
+                        connection2 = DriverManager.getConnection(baza, user, haslo);
                         Statement statement2 = connection2.createStatement() ;
                         ResultSet resultset2 = statement.executeQuery("select marka, rejestracja from ciezarowka WHERE id=" + idc) ;
   
@@ -138,7 +143,7 @@
     String rejn="";
                         Connection connection3 = null;
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        connection3 = DriverManager.getConnection("jdbc:mysql://dawid73.cal24.pl/dawid73_swsim", "dawid73_swsim", "java4321");
+                        connection3 = DriverManager.getConnection(baza, user, haslo);
                         Statement statement3 = connection3.createStatement() ;
                         ResultSet resultset3 = statement.executeQuery("select marka, rejestracja from naczepa WHERE id=" + idn) ;
   
@@ -150,7 +155,7 @@
                   <%= naczepa %> <%= rejn %>
   </div>
 </div>
-               
+             <a href="<%= request.getContextPath()%>/trasa?op=list" class="btn btn-mini btn-primary">Wróc</a>  
                     </div></center>
                 <!--//////////////////// Główna część strony///////////////////////// -->
                 

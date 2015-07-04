@@ -47,12 +47,12 @@ public class Trasa extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            /*out.println("<meta http-equiv='refresh' content='0; URL=trasa?op=list'>");   */
+            out.println("<meta http-equiv='refresh' content='0; URL=trasa?op=list'>");
             out.println("</head>");
             out.println("</head>");
             out.println("<body>");
             out.println("Dokonano zmian w profilu kierowca");
-            out.println("<a href='kierowcy?op=list'>do listy </a>");
+            out.println("<a href='trasa?op=list'>do listy </a>");
             out.println("</body>");
             out.println("</html>");
         }

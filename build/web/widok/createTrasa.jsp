@@ -6,13 +6,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:useBean id="list" scope="session" class="java.util.List" />
 
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="../WEB-INF/jspf/jscss.jspf"%>
         <title>Kierowcy - Lista</title>
+        <%
+        String baza = "jdbc:mysql://dawid73.cal24.pl/dawid73_swsim";
+        String user = "dawid73_swsim";
+        String haslo = "java4321";
+        %>
     </head>
     <!-- BODY STRONY -->
     <body style='background-color: #9999cc'>
@@ -66,7 +70,7 @@
                         
                         Connection connection = null;
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        connection = DriverManager.getConnection("jdbc:mysql://dawid73.cal24.pl/dawid73_swsim", "dawid73_swsim", "java4321");
+                        connection = DriverManager.getConnection(baza, user, haslo);
                         Statement statement = connection.createStatement() ;
                         ResultSet resultset = statement.executeQuery("select id, nazwisko, imie from kierowca;") ;
                         
@@ -89,7 +93,7 @@
                         <%
                         Connection connection2 = null;
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        connection2 = DriverManager.getConnection("jdbc:mysql://dawid73.cal24.pl/dawid73_swsim", "dawid73_swsim", "java4321");
+                        connection2 = DriverManager.getConnection(baza, user, haslo);
                         Statement statement2 = connection.createStatement() ;
                         ResultSet resultset2 = statement2.executeQuery("select id, marka, rejestracja from ciezarowka;") ;
    
@@ -111,7 +115,7 @@
                          <%
                         Connection connection3 = null;
                         Class.forName("com.mysql.jdbc.Driver").newInstance();
-                        connection3 = DriverManager.getConnection("jdbc:mysql://dawid73.cal24.pl/dawid73_swsim", "dawid73_swsim", "java4321");
+                        connection3 = DriverManager.getConnection(baza, user, haslo);
                         Statement statement3 = connection.createStatement() ;
                         ResultSet resultset3 = statement3.executeQuery("select id, marka, rejestracja from naczepa;") ;
    
