@@ -1,20 +1,46 @@
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <%@include file="WEB-INF/jspf/jscss.jspf"%>
-        <title>Program dla Magazynierów</title>
-        <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-    </head>
-    <body>
-        <%@include file="WEB-INF/jspf/top.jspf"%>
-    <div class="input-group" style="width: 300px">
-    
-        <jsp:forward page="login?op=list" />
+        <title>Kierowcy</title>
         
+    </head>
+    <body style='background-color: #9999cc'>
+<div class="container" style="width: 770px; background-color:white ;">
+    <div id="logo" style="height: 170px; width: 770px;">
+        <img src='<%= request.getContextPath()%>/widok/images/logo.jpg'>
+        <br/><br/>
+    </div> 
+            
+    <div id="main"> 
+    <div class="content">
+          <!--MENU -->
+                <div id="menu" style="height: 100px;">
+                    <%@include file="WEB-INF/jspf/top.jspf"%>
+                </div>
+                <!-- KONIEC MENU -->
+                <div class="jumbotron"><center>
+                    <h1>System Transportowy</h1>
+                    <p>Kompleksowy system obsługi transportu i spedycji, krajowej i międzynarodowej oraz zarządzania taborem</p>
+                    </center>
+                    </div>
+
+        
+            <div class="clear"></div>
     </div>
-        <%@include file="WEB-INF/jspf/bottom.jspf"%>
-    </body>
+    </div>
+            
+    <div id="footer">
+         <%@include file="WEB-INF/jspf/bottom.jspf"%>
+    </div>
+
+        
+            
+</div>
+   </body>
 </html>

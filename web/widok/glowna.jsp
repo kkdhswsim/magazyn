@@ -1,17 +1,24 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<jsp:useBean id="list" scope="session" class="java.util.List" />
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file="WEB-INF/jspf/jscss.jspf"%>
+        <%@include file="../WEB-INF/jspf/jscss.jspf"%>
         <title>Kierowcy</title>
         
     </head>
     <body style='background-color: #9999cc'>
 <div class="container" style="width: 770px; background-color:white ;">
+        <div class="row">
+            <div class="col-xs-12 col-md-8">
+
+               
+            </div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        </div>
     <div id="logo" style="height: 170px; width: 770px;">
         <img src='<%= request.getContextPath()%>/widok/images/logo.jpg'>
         <br/><br/>
@@ -19,16 +26,10 @@
             
     <div id="main"> 
     <div class="content">
-          <!--MENU -->
-                <div id="menu" style="height: 100px;">
-                    <%@include file="WEB-INF/jspf/top.jspf"%>
-                </div>
-                <!-- KONIEC MENU -->
-                <div class="jumbotron"><center>
-                    <h1>System Transportowy</h1>
-                    <p>Kompleksowy system obsługi transportu i spedycji, krajowej i międzynarodowej oraz zarządzania taborem</p>
-                    </center>
-                    </div>
+        <div style="height: 70px">
+            Witaj użytkowniku!<br/>
+            Musisz się zalogować, aby móc korzystać z aplikacji!
+        </div>
 
         
             <div class="clear"></div>
@@ -36,7 +37,7 @@
     </div>
             
     <div id="footer">
-         <%@include file="WEB-INF/jspf/bottom.jspf"%>
+         <%@include file="../WEB-INF/jspf/bottom.jspf"%>
     </div>
 
         

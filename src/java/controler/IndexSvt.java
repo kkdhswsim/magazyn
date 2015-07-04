@@ -58,9 +58,25 @@ public class IndexSvt extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String pagina = "/kierowca?op=start";
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
-        dispatcher.forward(request, response);
+ 
+        String op = request.getParameter("op");
+        String pagina;
+        if(op.equals("create")){
+            pagina = "/widok/createCiezarowka.jsp";
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+        }else if(op.equals("update")){
+            pagina = "/widok/updateCiezarowka.jsp";
+
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+        }
+        else{
+       
+    }
+        
+        
         
     }
 
